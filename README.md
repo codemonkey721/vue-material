@@ -9,7 +9,7 @@ such as json-scheme-form-builder... and I think the code I wrote is a totally a 
 
 
 * will create a new template by vue-cli 3.x 
-* will remove some useless code because of the vuetify framework updates  
+* will remove some useless code becuase of the vuetify framework updates  
 * may add vue-nuxt support
 * may add vuex support and sample code
 * will refactor the whole code 
@@ -21,10 +21,10 @@ Vuetify is Awesome.
 
 ## Discord Channel
 
-If there is any idea or advice may help improve the channel, pls leave your message.
+If there is any idea or advice may help improve the channel, pls leave your mesage.
 Thanks
 
-[https://discord.gg/yzMcpG] (https://discord.gg/yzMcpG)
+[https://discord.gg/9nsyEES] (https://discord.gg/9nsyEES)
 ## Demo
 [http://vma.isocked.com/#/dashboard](http://vma.isocked.com/#/dashboard) 
 
