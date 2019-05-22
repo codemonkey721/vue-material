@@ -2,12 +2,6 @@
 # Vue Material Admin
 
 ## Plan and features
-I didn't expected lot of people interesting in this project, and I'm so busy, so I din't have too much time to update the code.
-And in fact, I'm a backend developer, and I plan to build a backend REST API to integrated with the admin template.
-such as json-scheme-form-builder... and I think the code I wrote is a totally a trash, I plan to refactor them.
-~_~
-
-
 * will create a new template by vue-cli 3.x 
 * will remove some useless code becuase of the vuetify framework updates  
 * may add vue-nuxt support
@@ -19,12 +13,6 @@ Vue Material Admin Template is a [Vue](https://vuejs.org/index.html/) Based Mate
 And use [Vuetifyjs](https://vuetifyjs.com/) as base framework.
 Vuetify is Awesome.
 
-## Discord Channel
-
-If there is any idea or advice may help improve the channel, pls leave your mesage.
-Thanks
-
-[https://discord.gg/9nsyEES] (https://discord.gg/9nsyEES)
 ## Demo
 [http://vma.isocked.com/#/dashboard](http://vma.isocked.com/#/dashboard) 
 
