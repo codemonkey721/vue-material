@@ -9,17 +9,13 @@
       <v-list-tile avatar>
         <v-list-tile-content>
           <v-list-tile-title>Profile photo</v-list-tile-title>
-          <v-list-tile-sub-title
-            >Change your Google+ profile photo</v-list-tile-sub-title
-          >
+          <v-list-tile-sub-title>Change your Google+ profile photo</v-list-tile-sub-title>
         </v-list-tile-content>
       </v-list-tile>
       <v-list-tile avatar>
         <v-list-tile-content>
           <v-list-tile-title>Show your status</v-list-tile-title>
-          <v-list-tile-sub-title
-            >Your status is visible to everyone</v-list-tile-sub-title
-          >
+          <v-list-tile-sub-title>Your status is visible to everyone</v-list-tile-sub-title>
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
@@ -59,9 +55,7 @@
         </v-list-tile-action>
         <v-list-tile-content>
           <v-list-tile-title>Invites</v-list-tile-title>
-          <v-list-tile-sub-title
-            >Notify when receiving invites</v-list-tile-sub-title
-          >
+          <v-list-tile-sub-title>Notify when receiving invites</v-list-tile-sub-title>
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
@@ -74,8 +68,8 @@ export default {
       notifications: false,
       sound: false,
       video: false,
-      invites: false,
+      invites: false
     }
-  },
+  }
 }
 </script>

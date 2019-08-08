@@ -16,16 +16,17 @@
 export default {
   data: () => ({}),
 
-  methods: {},
+  methods: {}
 }
 </script>
-<style lang="sass" scoped>
-.split-bg 
-  height: 50%
-  width: 100%
-  position: absolute
-  top: 0
-  left: 0
-  content: ""
-  z-index: 0
+<style scoped lang="css">
+.split-bg {
+  height: 50%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  z-index: 0;
+}
 </style>

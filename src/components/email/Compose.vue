@@ -4,11 +4,15 @@
       <v-icon color="white">arrow_back</v-icon>
       <v-toolbar-title>Compose</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon> <v-icon color="white">send</v-icon> </v-btn>
+      <v-btn icon>
+        <v-icon color="white">send</v-icon>
+      </v-btn>
     </v-toolbar>
     <v-container fluid class="pa-0 mt-2">
       <v-layout wrap>
-        <v-flex xs2> <v-subheader>To</v-subheader> </v-flex>
+        <v-flex xs2>
+          <v-subheader>To</v-subheader>
+        </v-flex>
         <v-flex xs10 class="text-xs-right">
           <v-chip>
             <v-avatar>
@@ -24,7 +28,9 @@
           </v-chip>
         </v-flex>
         <v-divider></v-divider>
-        <v-flex xs2> <v-subheader>CC</v-subheader> </v-flex>
+        <v-flex xs2>
+          <v-subheader>CC</v-subheader>
+        </v-flex>
         <v-flex xs10 class="text-xs-right">
           <v-chip>
             <v-avatar>
@@ -45,7 +51,7 @@
         </v-flex>
         <v-flex xs12>
           <v-divider></v-divider>
-          <v-textarea
+          <v-text-field
             label="Message"
             v-model="title"
             counter
@@ -53,7 +59,7 @@
             full-width
             multi-line
             single-line
-          ></v-textarea>
+          ></v-text-field>
         </v-flex>
       </v-layout>
     </v-container>
@@ -64,7 +70,7 @@
 export default {
   data: () => ({
     title:
-      'Hi,\nI just wanted to check in and see if you had any plans the upcoming weekend. We are thinking of heading up to Napa',
-  }),
+      "Hi,\nI just wanted to check in and see if you had any plans the upcoming weekend. We are thinking of heading up to Napa"
+  })
 }
 </script>

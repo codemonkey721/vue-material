@@ -18,24 +18,24 @@
 
 <script>
 export default {
-  name: 'VWidget',
+  name: "VWidget",
   props: {
     title: {
-      type: String,
+      type: String
     },
     enableHeader: {
       type: Boolean,
-      default: true,
+      default: true
     },
     contentBg: {
       type: String,
-      default: 'white',
-    },
+      default: "white"
+    }
   },
 
   data() {
     return {}
   },
-  computed: {},
+  computed: {}
 }
 </script>

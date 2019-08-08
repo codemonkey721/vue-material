@@ -1,32 +1,23 @@
 <template>
   <div class="chat-contact">
-    <v-text-field
-      solo
-      clearable
-      prepend-inner-icon="search"
-      hide-details
-      label="Search"
-      @input="handleSearch"
-    ></v-text-field>
+    <v-toolbar flat dense class="chat-contact--toolbar">
+      <v-text-field flat solo full-width prepend-icon="search" label="Search"></v-text-field>
+    </v-toolbar>
     <vue-perfect-scrollbar class="chat-history--scrollbar">
       <v-divider></v-divider>
       <v-list two-line class="chat-contact--list">
         <v-subheader>Contacts</v-subheader>
         <template v-for="(item, index) in users">
           <v-divider :key="index"></v-divider>
-          <v-list-tile
-            avatar
-            :key="item.name + index"
-            :to="contactRoute(item.uuid)"
-          >
+          <v-list-tile avatar :key="item.name + index" :to="contactRoute(item.uuid)">
             <v-list-tile-avatar color="primary">
               <img :src="item.avatar" v-if="item.avatar" />
-              <span v-else class="white--text headline">{{
-                firstLetter(item.name)
-              }}</span>
+              <span v-else class="white--text headline">{{ firstLetter(item.name) }}</span>
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title>{{ item.name }}</v-list-tile-title>
+              <v-list-tile-title>
+                {{ item.name }}
+              </v-list-tile-title>
               <v-list-tile-sub-title>{{ item.jobTitle }}</v-list-tile-sub-title>
             </v-list-tile-content>
             <v-list-tile-action>
@@ -40,39 +31,31 @@
 </template>
 
 <script>
-import { getUser } from '@/api/user'
-import VCircle from '@/components/circle/VCircle'
-import VuePerfectScrollbar from 'vue-perfect-scrollbar'
+import { getUser } from "@/api/user"
+import VCircle from "@/components/circle/VCircle"
+import VuePerfectScrollbar from "vue-perfect-scrollbar"
 export default {
   components: {
     VuePerfectScrollbar,
-    VCircle,
+    VCircle
   },
-  data() {
-    return {
-      users: getUser(),
+  data: () => ({}),
+  computed: {
+    users() {
+      return getUser()
     }
   },
-  computed: {},
   methods: {
     contactRoute(id) {
-      return '/chat/contact/' + id
+      return "/chat/contact/" + id
     },
     firstLetter(name) {
       return name.charAt(0)
     },
     userStatusColor(item) {
-      return item.active ? 'green' : 'grey'
-    },
-    handleSearch(q) {
-      if (q.length > 3) {
-        this.users.filter(u => {
-          const name = u.name.toLowerCase()
-          return name.startsWith(q) === true
-        })
-      }
-    },
-  },
+      return item.active ? "green" : "grey"
+    }
+  }
 }
 </script>
 

@@ -55,16 +55,5 @@ module.exports = {
   },
 
   assetsDir: 'static',
-  runtimeCompiler: true,
-
-  pluginOptions: {
-    express: {
-      shouldServeApp: true,
-      serverDir: './server'
-    },
-    'style-resources-loader': {
-      preProcessor: 'sass',
-      patterns: []
-    }
-  }
+  runtimeCompiler: true
 }
