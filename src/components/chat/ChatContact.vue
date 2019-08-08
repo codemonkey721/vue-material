@@ -5,9 +5,7 @@
         <v-flex lg3 class="chat-contact--sidebar white">
           <chat-contact-list></chat-contact-list>
         </v-flex>
-        <v-flex lg9>
-          <chat-contact-profile></chat-contact-profile>
-        </v-flex>
+        <v-flex lg9> <chat-contact-profile></chat-contact-profile> </v-flex>
       </v-layout>
     </template>
     <template v-else>
@@ -23,17 +21,17 @@
   </v-container>
 </template>
 <script>
-import ChatContactList from "./ChatContactList"
-import ChatContactProfile from "./ChatContactProfile"
+import ChatContactList from './ChatContactList'
+import ChatContactProfile from './ChatContactProfile'
 export default {
   components: {
     ChatContactList,
-    ChatContactProfile
+    ChatContactProfile,
   },
   data() {
     return {
       chat: null,
-      selectedTab: null
+      selectedTab: null,
     }
   },
   computed: {
@@ -42,7 +40,7 @@ export default {
     },
     showWindow() {
       return this.$route.params.uuid !== undefined
-    }
-  }
+    },
+  },
 }
 </script>

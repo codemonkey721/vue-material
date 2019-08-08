@@ -1,17 +1,16 @@
 <template>
   <v-card>
-    <v-toolbar card prominent extended color="primary" dark="">
+    <v-app-bar text prominent extended color="primary" dark="">
       <v-toolbar-title class="body-2">Add New Event</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn icon @click="closeDialog">
-        <v-icon>close</v-icon>
-      </v-btn>
-    </v-toolbar>
+      <v-btn icon @click="closeDialog"> <v-icon>close</v-icon> </v-btn>
+    </v-app-bar >
     <v-card-text>
       <v-form v-model="valid" ref="form" lazy-validation>
         <v-layout row wrap>
           <v-flex lg12 sm12>
-            <v-text-field label="Title" name="title" v-model="title"> </v-text-field>
+            <v-text-field label="Title" name="title" v-model="title">
+            </v-text-field>
           </v-flex>
           <v-flex sm6 lg6>
             <v-menu
@@ -27,17 +26,27 @@
               max-width="290px"
               :return-value.sync="startDate"
             >
-              <v-text-field
-                slot="activator"
-                label="Start Date"
-                v-model="startDate"
-                append-icon="event"
-                readonly
-              ></v-text-field>
+              <template v-slot:activator="{ on }">
+                <v-text-field
+                  slot="activator"
+                  label="Start Date"
+                  v-model="startDate"
+                  append-icon="event"
+                  readonly
+                  v-on="on"
+                ></v-text-field>
+              </template>
               <v-date-picker v-model="startDate" no-title scrollable>
                 <v-spacer></v-spacer>
-                <v-btn flat color="primary" @click="startDateMenu = false">Cancel</v-btn>
-                <v-btn flat color="primary" @click="$refs.statDate.save(startDate)">OK</v-btn>
+                <v-btn text color="primary" @click="startDateMenu = false"
+                  >Cancel</v-btn
+                >
+                <v-btn
+                  text
+                  color="primary"
+                  @click="$refs.statDate.save(startDate)"
+                  >OK</v-btn
+                >
               </v-date-picker>
             </v-menu>
           </v-flex>
@@ -54,17 +63,26 @@
               max-width="290px"
               :return-value.sync="startTime"
             >
-              <v-text-field
+              <template v-slot:activator="{ on }">
+                <v-text-field
                 slot="activator"
                 label="Start Time"
                 v-model="startTime"
                 append-icon="access_time"
                 readonly
+                v-on="on"
               ></v-text-field>
               <v-time-picker v-model="startTime">
                 <v-spacer></v-spacer>
-                <v-btn flat color="primary" @click="startTimeMenu = false">Cancel</v-btn>
-                <v-btn flat color="primary" @click="$refs.startTime.save(startTime)">OK</v-btn>
+                <v-btn text color="primary" @click="startTimeMenu = false"
+                  >Cancel</v-btn
+                >
+                <v-btn
+                  text
+                  color="primary"
+                  @click="$refs.startTime.save(startTime)"
+                  >OK</v-btn
+                >
               </v-time-picker>
             </v-menu>
           </v-flex>
@@ -82,17 +100,23 @@
               min-width="290px"
               :return-value.sync="endDate"
             >
-              <v-text-field
+              <template v-slot:activator="{ on }">
+                <v-text-field
                 slot="activator"
                 label="End Date"
                 v-model="endDate"
                 append-icon="event"
                 readonly
+                v-on="on"
               ></v-text-field>
               <v-date-picker v-model="endDate" no-title scrollable>
                 <v-spacer></v-spacer>
-                <v-btn flat color="primary" @click="endDateMenu = false">Cancel</v-btn>
-                <v-btn flat color="primary" @click="$refs.endDate.save(endDate)">OK</v-btn>
+                <v-btn text color="primary" @click="endDateMenu = false"
+                  >Cancel</v-btn
+                >
+                <v-btn text color="primary" @click="$refs.endDate.save(endDate)"
+                  >OK</v-btn
+                >
               </v-date-picker>
             </v-menu>
           </v-flex>
@@ -109,17 +133,23 @@
               max-width="290px"
               :return-value.sync="endTime"
             >
-              <v-text-field
+              <template v-slot:activator="{ on }">
+                <v-text-field
                 slot="activator"
                 label="End Time"
                 v-model="endTime"
                 append-icon="access_time"
                 readonly
+                v-on="on"
               ></v-text-field>
               <v-time-picker v-model="endTime">
                 <v-spacer></v-spacer>
-                <v-btn flat color="primary" @click="endTimeMenu = false">Cancel</v-btn>
-                <v-btn flat color="primary" @click="$refs.endTime.save(endTime)">OK</v-btn>
+                <v-btn text color="primary" @click="endTimeMenu = false"
+                  >Cancel</v-btn
+                >
+                <v-btn text color="primary" @click="$refs.endTime.save(endTime)"
+                  >OK</v-btn
+                >
               </v-time-picker>
             </v-menu>
           </v-flex>
@@ -151,12 +181,12 @@ export default {
     endDate: null,
     endTimeMenu: false,
     endTime: null,
-    modal: false
+    modal: false,
   }),
   methods: {
     closeDialog() {
       this.$parent.isActive = false
-    }
-  }
+    },
+  },
 }
 </script>
