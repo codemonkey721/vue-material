@@ -2,12 +2,7 @@
   <v-card class="elevation-1 pa-3 login-card">
     <v-card-text>
       <v-layout align-center justify-center column fill-height>
-        <img
-          src="/static/m.png"
-          alt="Vue Material Admin"
-          width="120"
-          height="120"
-        />
+        <img src="/static/m.png" alt="Vue Material Admin" width="120" height="120" />
         <h1 class="my-4 primary--text display-1">Material Admin Template</h1>
       </v-layout>
       <v-form>
@@ -18,6 +13,7 @@
           type="text"
           v-model="model.username"
         ></v-text-field>
+
         <v-text-field
           append-icon="lock"
           name="password"
@@ -48,8 +44,10 @@
 export default {
   data: () => ({
     loading: false,
+
     model: {
       username: 'admin@isocked.com',
+
       password: 'password',
     },
   }),
@@ -57,7 +55,7 @@ export default {
   methods: {
     login() {
       this.loading = true
-      // handle login
+
       setTimeout(() => {
         this.$router.push('/dashboard')
       }, 1000)
@@ -65,4 +63,5 @@ export default {
   },
 }
 </script>
+
 <style lang="sass" scoped></style>
