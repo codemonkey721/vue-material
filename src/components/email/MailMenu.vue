@@ -11,11 +11,9 @@
         <!-- Top level -->
         <v-list-item :key="item.text" :to="item.to">
           <v-list-item-action v-if="item.icon">
-            <v-icon
-              :color="item.iconColor"
-              :small="item.iconSize"
-              v-text="item.icon"
-            />
+            <v-icon :color="item.iconColor" :small="item.iconSize">{{
+              item.icon
+            }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
@@ -32,17 +30,17 @@ export default {
     return {
       items: [
         {
-          title: 'Inbox',
+          title: 'Email',
           group: 'email',
           icon: 'email',
-          to: { path: '/mail/inbox' },
+          to: { path: '/mail/all' },
           chip: 10
         },
         {
           title: 'Sent',
           group: 'email',
           icon: 'send',
-          to: { path: '/mail/sent' },
+          // to: { path: '/mail/sent' },
           chip: 5
         },
         {
