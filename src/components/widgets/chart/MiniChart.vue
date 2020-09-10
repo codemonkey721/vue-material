@@ -1,15 +1,15 @@
 <template>
   <v-card tile>
     <v-card-text>
-      <div class="d-flex align-center justify-space-between">
-        <div>
+      <div class="layout row ma-0 align-center justify-space-between">
+        <div class="text-box">
           <div class="subheading pb-2">{{ title }}</div>
           <span class="grey--text"
             >{{ subTitle }}
             <v-icon small :color="iconColor">{{ icon }}</v-icon></span
           >
         </div>
-        <div>
+        <div class="chart">
           <e-chart :path-option="computeChartOption" height="68px" width="100%">
           </e-chart>
         </div>
@@ -67,6 +67,7 @@ export default {
 
   watch: {
     type: {
+      deep: true,
       handler: function(newVal) {
         switch (newVal) {
           case 'bar':
@@ -80,8 +81,7 @@ export default {
             break
         }
         return this.defaultOption
-      },
-      immediate: true
+      }
     }
   },
   computed: {
