@@ -1,9 +1,3 @@
-import { format } from 'date-fns'
-
-const formatDate = (d, dateFormat = 'MM/dd/yyyy') => {
-  return format(d, dateFormat)
-}
-
 // export function camel (str) {
 //   const camel = (str || '').replace(/-([^-])/g, g => g[1].toUpperCase());
 
@@ -86,6 +80,5 @@ const toggleFullScreen = () => {
 export default {
   randomElement,
   toggleFullScreen,
-  formatDate,
   kebab
 }
