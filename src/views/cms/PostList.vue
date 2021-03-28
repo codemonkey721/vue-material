@@ -1,5 +1,5 @@
 <template>
-  <div class="page-user">
+  <div class="cms-post">
     <v-container>
       <v-row>
         <v-col cols="12">
@@ -10,9 +10,7 @@
                 text
                 solo
                 flat
-                :prepend-icon="
-                  showFilter ? 'mdi-filter-variant-plus' : 'mdi-filter-variant'
-                "
+                :prepend-icon="showFilter ? 'mdi-filter-variant-plus' : 'mdi-filter-variant'"
                 append-icon="mdi-magnify"
                 placeholder="Type something"
                 hide-details
@@ -32,11 +30,7 @@
             <v-divider />
             <v-card v-show="showFilter" flat class="grey lighten-4">
               <v-card-text>
-                <v-btn-toggle
-                  v-model="filter['filter[gender]']"
-                  tile
-                  color="deep-purple accent-3"
-                >
+                <v-btn-toggle v-model="filter['filter[gender]']" tile color="deep-purple accent-3">
                   <v-btn value="male" icon>
                     <v-icon>mdi-gender-male</v-icon>
                   </v-btn>
@@ -51,9 +45,7 @@
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn text @click="handleResetFilter">Reset</v-btn>
-                <v-btn tile color="primary" @click="handleApplyFilter"
-                  >Apply</v-btn
-                >
+                <v-btn tile color="primary" @click="handleApplyFilter">Apply</v-btn>
               </v-card-actions>
             </v-card>
             <v-card-text class="pa-0">
@@ -69,14 +61,14 @@
                 show-select
                 @update:page="handlePageChanged"
               >
-                <template v-slot:[`item.avatar`]="{ item }">
+                <template #[`item.avatar`]="{ item }">
                   <c-avatar class="my-3" :username="item.username" />
                 </template>
-                <template v-slot:[`item.action`]="{ item }">
+                <template #[`item.action`]="{ item }">
                   <v-menu>
-                    <template v-slot:activator="{ on: menu }">
+                    <template #activator="{ on: menu }">
                       <v-tooltip bottom>
-                        <template v-slot:activator="{ on: tooltip }">
+                        <template #activator="{ on: tooltip }">
                           <v-btn icon v-on="onTooltip({ ...tooltip, ...menu })">
                             <v-icon>mdi-dots-vertical</v-icon>
                           </v-btn>
@@ -85,11 +77,7 @@
                       </v-tooltip>
                     </template>
                     <v-list class="pa-0" dense>
-                      <v-list-item
-                        v-for="action in actions"
-                        :key="action.text"
-                        @click="action.click(item)"
-                      >
+                      <v-list-item v-for="action in actions" :key="action.text" @click="action.click(item)">
                         <v-list-item-icon class="mr-2">
                           <v-icon small>{{ action.icon }}</v-icon>
                         </v-list-item-icon>
@@ -113,7 +101,7 @@ import CAvatar from '@/components/avatar/CAvatar'
 
 export default {
   components: {
-    CAvatar
+    CAvatar,
   },
   mixins: [TooltipMixin],
   data() {
@@ -125,53 +113,49 @@ export default {
       showFilter: false,
       filter: {
         page: 1,
-        'filter[username]': null,
-        'filter[gender]': null
+        'filter[name]': null,
+        'filter[status]': null,
       },
       headers: [
         {
-          text: 'Avatar',
-          value: 'avatar'
-        },
-        {
           text: 'Name',
-          value: 'username'
+          value: 'name',
         },
         {
-          text: 'Email',
-          value: 'email'
+          text: 'Description',
+          value: 'descripiton',
         },
         {
-          text: 'Phone',
-          value: 'phone'
+          text: 'slug',
+          value: 'slug',
         },
         {
-          text: 'Gender',
-          value: 'gender'
+          text: 'Status',
+          value: 'status',
         },
         {
           text: 'Action',
-          value: 'action'
-        }
+          value: 'action',
+        },
       ],
       items: [],
       actions: [
         {
           text: 'View Item',
           icon: 'mdi-eye',
-          click: this.handleViewItem
+          click: this.handleViewItem,
         },
         {
           text: 'Edit Item',
           icon: 'mdi-pencil',
-          click: this.handleEditItem
+          click: this.handleEditItem,
         },
         {
           text: 'Delete Item',
           icon: 'mdi-close',
-          click: this.handleDeleteItem
-        }
-      ]
+          click: this.handleDeleteItem,
+        },
+      ],
     }
   },
   watch: {
@@ -180,8 +164,8 @@ export default {
         const filter = this.updateFilterQuery(query)
         this.fetchRecords(filter)
       },
-      immediate: true
-    }
+      immediate: true,
+    },
   },
   methods: {
     //
@@ -193,14 +177,14 @@ export default {
     resetFilter() {
       this.filter = {
         page: 1,
-        'filter[username]': null
+        'filter[name]': null,
       }
     },
     fetchRecords(query) {
       this.loadingItems = true
       this.items = []
       return this.$store
-        .dispatch('fetchUser', query)
+        .dispatch('fetchPost', query)
         .then(({ data, meta }) => {
           this.items = data
           this.serverItemsLength = meta.total
@@ -213,13 +197,13 @@ export default {
     //action
     handleCreateItem() {
       this.$router.push({
-        path: '/acl/user/create'
+        path: '/acl/user/create',
       })
     },
     handleViewItem() {},
     handleEditItem({ id }) {
       this.$router.push({
-        path: `/acl/user/item/${id}`
+        path: `/acl/user/item/${id}`,
       })
     },
     handleDeleteItem() {},
@@ -233,24 +217,24 @@ export default {
       this.filter.t = Date.now()
       this.$router.replace({
         path: this.$route.path,
-        query: this.filter
+        query: this.filter,
       })
     },
     handleResetFilter() {
       this.filter = {
         page: 1,
         'filter[username]': null,
-        'filter[gender]': null
+        'filter[gender]': null,
       }
       this.$router.replace({
-        path: this.$route.path
+        path: this.$route.path,
       })
     },
     handleApplyFilter() {
       this.filter.t = Date.now()
       this.$router.replace({
         path: this.$route.path,
-        query: this.filter
+        query: this.filter,
       })
     },
     handleClear() {
@@ -258,9 +242,9 @@ export default {
       this.filter.t = Date.now()
       this.$router.replace({
         path: this.$route.path,
-        query: this.filter
+        query: this.filter,
       })
-    }
-  }
+    },
+  },
 }
 </script>
